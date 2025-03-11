@@ -13,15 +13,15 @@ phases:
     commands:
       - echo Building the application...
       - npm run build
+      - pwd
 
   post_build:
     commands:
       - echo Build completed successfully!
+      - ls
 
 artifacts:
   files:
-    - '**/*'  # This ensures that all files are included in the artifact
-  base-directory: nodejsbuild/build # Ensure this is the directory where your build files are generated
-  discard-paths: yes  # Optional: Use this if you want to discard directory structure in the artifact
+    - 'build/**/*' 
 
   
