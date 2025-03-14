@@ -22,7 +22,7 @@ phases:
     commands:
       - echo Zipping the build folder...
       - cd build
-      - zip -r ../build.zip .  # Zipping the build directory
+      - zip -r ../build.zip .  # Zipping the build directory, including everything
 
 artifacts:
   files:

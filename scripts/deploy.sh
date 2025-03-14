@@ -1,9 +1,9 @@
 #!/bin/bash
-echo "Deploying the build..."
+echo "Deploying the new build..."
 
 # Remove old files and copy the new build
 sudo rm -rf /usr/share/nginx/html/*
-sudo cp -r /tmp/demobuild/* /usr/share/nginx/html/
+sudo cp -r /tmp/demobuild/static/* /usr/share/nginx/html/
 
-# Ensure the proper permissions
+# Ensure proper permissions
 sudo chown -R nginx:nginx /usr/share/nginx/html/
