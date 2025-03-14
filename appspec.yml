@@ -3,22 +3,25 @@ os: linux
 
 files:
   - source: /static/*
-    destination: /usr/share/nginx/html/  # Copy files in static/ to the Nginx html folder
+    destination: /usr/share/nginx/html/
   - source: /index.html
-    destination: /usr/share/nginx/html/  # Ensure index.html goes to the correct location
+    destination: /usr/share/nginx/html/
 
 hooks:
   BeforeInstall:
-    - location: script/stop_nginx.sh  # Adjusted for script/ directory
+    - location: script/stop_nginx.sh
       timeout: 300
+      runas: root
+    - location: script/remove_existing_files.sh  # New script to remove existing files
+      timeout: 60
       runas: root
 
   AfterInstall:
-    - location: script/deploy.sh  # Adjusted for script/ directory
+    - location: script/deploy.sh
       timeout: 300
       runas: root
 
   ApplicationStart:
-    - location: script/start_nginx.sh  # Adjusted for script/ directory
+    - location: script/start_nginx.sh
       timeout: 300
       runas: root
