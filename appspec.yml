@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 
 files:
-  - source: /static/*
+  - source: static/*  # No leading slash needed
     destination: /usr/share/nginx/html/
-  - source: /index.html
+  - source: index.html  # No leading slash needed
     destination: /usr/share/nginx/html/
 
 hooks:
@@ -12,7 +12,7 @@ hooks:
     - location: script/stop_nginx.sh
       timeout: 300
       runas: root
-    - location: script/remove_existing_files.sh  # New script to remove existing files
+    - location: script/remove_existing_files.sh  # Optional: Remove existing files
       timeout: 60
       runas: root
 
