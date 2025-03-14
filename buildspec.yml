@@ -16,7 +16,7 @@ phases:
       - echo Copying appspec.yml to build directory...
       - cp appspec.yml build/  # Ensure appspec.yml is included in the build directory
       - echo Copying scripts/ to build directory...
-      - cp -r scripts/ build/  # Ensure scripts are included in the build directory
+      - cp -r script/ build/  # Ensure scripts are included in the build directory
 
   post_build:
     commands:
