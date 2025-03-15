@@ -4,7 +4,7 @@ function App() {
     return (
         <div>
             <h1>Welcome to My DevOps Appp</h1>
-            <p>This is a simple React application..</p>
+            <p>This is a simple React application deployed by codedeploy</p>
         </div>
     );
 }
