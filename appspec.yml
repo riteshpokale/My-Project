@@ -5,6 +5,10 @@ files:
   - source: /build
     destination: /usr/share/nginx/html
 
+  # Copy the build folder to the project directory
+  - source: /build
+    destination: /var/www/demo-project/build
+
   # Copy the scripts folder to a location of your choice on the EC2 instance
   - source: /script
     destination: /var/www/demo-project/script
