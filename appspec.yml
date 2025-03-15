@@ -1,27 +1,35 @@
 version: 0.0
 os: linux
-
 files:
-  - source: static/*  # No leading slash needed
-    destination: /usr/share/nginx/html/
-  - source: index.html  # No leading slash needed
-    destination: /usr/share/nginx/html/
+  # Copy the build folder (your built assets) to the Nginx web root
+  - source: /build
+    destination: /usr/share/nginx/html
+
+  # Copy the scripts folder to a location of your choice on the EC2 instance
+  - source: /script
+    destination: /var/www/demo-project/script
+
+  # Copy the appspec.yml to the EC2 instance (optional)
+  - source: /appspec.yml
+    destination: /var/www/demo-project/appspec.yml
 
 hooks:
   BeforeInstall:
     - location: script/stop_nginx.sh
-      timeout: 300
+      timeout: 180
       runas: root
-    - location: script/remove_existing_files.sh  # Optional: Remove existing files
-      timeout: 60
+
+  Install:
+    - location: script/install_dependencies.sh
+      timeout: 180
       runas: root
 
   AfterInstall:
-    - location: script/deploy.sh
-      timeout: 300
+    - location: script/start_nginx.sh
+      timeout: 180
       runas: root
 
   ApplicationStart:
-    - location: script/start_nginx.sh
-      timeout: 300
+    - location: script/start_application.sh
+      timeout: 180
       runas: root
