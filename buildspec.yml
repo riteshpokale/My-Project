@@ -13,17 +13,13 @@ phases:
       - echo Building the application...
       - npm run build
       - pwd
-      - echo Copying appspec.yml to build directory...
-      - cp appspec.yml build/  # Ensure appspec.yml is included in the build directory
-      - echo Copying scripts/ to build directory...
-      - cp -r script/ build/  # Ensure scripts are included in the build directory
 
   post_build:
     commands:
-      - echo Zipping the build folder...
-      - cd build
-      - zip -r ../build.zip .  # Zipping the build directory, including everything
+      - echo entering post build
 
 artifacts:
   files:
-    - 'build.zip'  # Zipped build artifact
+    - 'build/**/*'
+    - 'appspec.yml'
+    - 'script/**/*'
