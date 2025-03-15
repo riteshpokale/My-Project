@@ -1,39 +1,22 @@
 version: 0.0
 os: linux
 files:
-  # Copy the build folder (your built assets) to the Nginx web root
-  - source: /build
-    destination: /usr/share/nginx/html
-
-  # Copy the build folder to the project directory
-  - source: /build
-    destination: /var/www/demo-project/build
-
-  # Copy the scripts folder to a location of your choice on the EC2 instance
-  - source: /script
-    destination: /var/www/demo-project/script
-
-  # Copy the appspec.yml to the EC2 instance (optional)
-  - source: /appspec.yml
-    destination: /var/www/demo-project/appspec.yml
-
+  - source: /
+    destination: /home/ec2-user/demo-app
+permissions:
+  - object: /home/ec2-user/demo-app
+    owner: ec2-user
+    group: ec2-user
 hooks:
-  BeforeInstall:
-    - location: script/stop_nginx.sh
-      timeout: 180
-      runas: root
-
-  Install:
-    - location: script/install_dependencies.sh
-      timeout: 180
-      runas: root
-
   AfterInstall:
-    - location: script/start_nginx.sh
-      timeout: 180
-      runas: root
-
+    - location: script/install.sh
+      timeout: 300
+      runas: ec2-user
   ApplicationStart:
-    - location: script/start_application.sh
-      timeout: 180
-      runas: root
+    - location: script/start.sh
+      timeout: 300
+      runas: ec2-user
+  ApplicationStop:
+    - location: script/stop.sh
+      timeout: 300
+      runas: ec2-user
