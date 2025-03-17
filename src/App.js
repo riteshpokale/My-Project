@@ -1,12 +1,12 @@
 import React from "react";
+import './App.css'; // Importing the CSS file for styles
 
-function App() {
-    return (
-        <div>
-            <h1>Welcome to My DevOps Appp</h1>
-            <p>This is a simple React application deployed by codedeploy</p>
-        </div>
-    );
-}
+const App = () => {
+  return (
+    <div className="container">
+      <h1 className="text">Welcome to Code Build- Deploy</h1>
+    </div>
+  );
+};
 
 export default App;
