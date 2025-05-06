@@ -6,28 +6,29 @@
     height: 100vh;
     background-color: #282c34;  /* Background color of the page */
     flex-direction: column;
-  }
-  
-  /* Apply background gradient and text animation */
-  .text {
+}
+
+/* Animated gradient text */
+.text {
     font-size: 3em;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, red, yellow, green, blue, purple);
+    background: linear-gradient(270deg, red, yellow, green, blue, purple, red);
+    background-size: 1000% 100%;
     color: transparent;
     background-clip: text;
-    animation: colorChange 5s infinite;  /* Apply color change animation */
-  }
-  
-  /* Keyframe animation to transition the background gradient */
-  @keyframes colorChange {
+    -webkit-background-clip: text; /* for Safari support */
+    animation: moveGradient 10s ease infinite;
+}
+
+/* Keyframe to move the background gradient */
+@keyframes moveGradient {
     0% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
     50% {
-      background-position: 100% 50%;
+        background-position: 100% 50%;
     }
     100% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
-  }
-  
+}
