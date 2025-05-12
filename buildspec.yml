@@ -19,7 +19,7 @@ phases:
 
   post_build:
     commands:
-      - echo The build is completed
+      - echo The build is complete
 
 artifcats:
   files:
