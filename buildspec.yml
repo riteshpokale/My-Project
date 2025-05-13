@@ -1,4 +1,4 @@
-version: 0.1 # This is the reference from the devloper/DevOps Engineer
+version: 0.2 # This is the reference from the devloper/DevOps Engineer
 
 phases:
   install:
